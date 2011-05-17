@@ -3,13 +3,14 @@ package main;
 import java.util.List;
 
 import algoritmo.Prim;
+
 import estrutura.Aresta;
 import estrutura.Grafo;
 import estrutura.MySet;
 import estrutura.Vertice;
 
 public class MainGrafo {
-
+	
 	public static void main(String args[]){
 		
 		Grafo grafo = new Grafo();
@@ -42,5 +43,8 @@ public class MainGrafo {
 		MySet<Aresta> primRes = prim.primVetorOrdenado(grafo);
 		
 		System.out.println(primRes);
+		
+		
 	}
+
 }

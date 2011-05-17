@@ -6,6 +6,10 @@ import estrutura.MySet;
 import estrutura.OrderedVector;
 import estrutura.Vertice;
 
+/*
+ * Algoritmo de Prim com complexidade ruim, pois foi implementado utilizando um Vetor Ordenado e
+ * nao um HEAP.
+ */
 public class Prim {
 	
 	public MySet<Aresta> primVetorOrdenado(Grafo g){
