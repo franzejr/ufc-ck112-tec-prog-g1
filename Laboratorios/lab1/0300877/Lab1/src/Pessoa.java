@@ -53,6 +53,7 @@ public class Pessoa {
 	public void setConjuge(Pessoa conjuge){
 		this.conjuge = conjuge;
 	}
+	
 	public Pessoa getConjuge(){
 		return this.conjuge;
 
@@ -137,6 +138,14 @@ public class Pessoa {
 			}
 		}
 		return primos;
+	}
+	
+	@Override
+	public String toString() {
+		
+		String s="";
+		s+= this.getNome();
+		return s;
 	}
 
 }

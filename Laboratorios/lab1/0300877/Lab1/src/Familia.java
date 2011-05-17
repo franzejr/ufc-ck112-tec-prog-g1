@@ -34,7 +34,7 @@ public class Familia {
 		
 		for (int i=0;i<listaPessoas.size();i++){
 			
-			if (nome == listaPessoas.get(i).getNome()){
+			if (nome.equals(listaPessoas.get(i).getNome())){
 				
 				return listaPessoas.get(i); 
 				
@@ -45,24 +45,24 @@ public class Familia {
 	
 	public void imprimirEstrutura(String nome1, String nome2){
 		
-		System.out.print(nome1 + nome2 + " -> ");
+		System.out.print(nome1 + " " + nome2 + " -> ");
 	}
 		
 	public void interpretarPedido(String parentesco, Pessoa pessoa){
 				
 		if ("pai".equalsIgnoreCase(parentesco)){
 			
-			System.out.println("heauheuahe");
-		
 			this.imprimirEstrutura(parentesco, pessoa.getNome());
 			System.out.println(pessoa.getPai().getNome());
 			
 		}
-		if (parentesco == "mae"){
+		if ("mae".equalsIgnoreCase(parentesco)){
+			
 			imprimirEstrutura(parentesco, pessoa.getNome());
 			System.out.println(pessoa.getMae().getNome()); 
 		}
-		if (parentesco == "filho"){
+		
+		if ("filho".equalsIgnoreCase(parentesco)){
 			
 			for (int i=0;i<pessoa.getFilhos().size();i++){
 				imprimirEstrutura(parentesco, pessoa.getNome());
@@ -70,21 +70,21 @@ public class Familia {
 				
 			}
 		}
-		if (parentesco == "irmao"){
+		if ("irmao".equalsIgnoreCase(parentesco)){
 			for (int i=0;i<pessoa.getIrmaos().size();i++){
 				imprimirEstrutura(parentesco, pessoa.getNome());
 				System.out.println(pessoa.getIrmaos().get(i));
 			}
 			
 		}
-		if (parentesco == "primo"){
+		if ("primo".equalsIgnoreCase(parentesco)){
 			for (int i=0;i<pessoa.getPrimos().size();i++){
 				imprimirEstrutura(parentesco, pessoa.getNome());
 				System.out.println(pessoa.getPrimos().get(i));
 				
 			}
 		}
-		if (parentesco == "neto"){
+		if ("neto".equalsIgnoreCase(parentesco)){
 			for (int i=0;i<pessoa.getNetos().size();i++){
 				imprimirEstrutura(parentesco, pessoa.getNome());
 				System.out.println(pessoa.getNetos().get(i));
@@ -100,8 +100,6 @@ public class Familia {
         Familia familia = new Familia();
 
         familia.criarArvore(); 
-       
-        System.out.println(familia.listaPessoas.size());
         
         familia.interpretarPedido(args[0], familia.encontrarPessoa(args[1]));
     }
