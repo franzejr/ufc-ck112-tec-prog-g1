@@ -4,7 +4,7 @@ import java.util.List;
 
 public class GrafoMain {
 
-	public Grafo criarGrafo(){
+	public static Grafo criarGrafo(){
 		
 		Grafo novoGrafo = new Grafo();
 		List<Vertice> vertices = new ArrayList<Vertice>();
@@ -80,27 +80,16 @@ public class GrafoMain {
 		return novoGrafo;
 	}
 	
-	public Vertice encontrarVertice(Grafo grafo, String nome){
-		
-		for (int i=0;i<grafo.getVertices().size();i++){
-			
-			if (nome.equalsIgnoreCase(grafo.getVertices().get(i).getDescricao())){
-				
-				return grafo.getVertices().get(i);
-				
-			}
-		}
-		
-		return null;
-		
-	}
 	
-	public void main(String args[]){
+	public static void main(String args[]){
 		
 		Grafo novoGrafo = criarGrafo();
 		List<Vertice> menorCaminho = new ArrayList<Vertice>();
-		
-		menorCaminho = novoGrafo.encontrarMenorCaminhoDijkstra(this.encontrarVertice(novoGrafo, args[0]),this.encontrarVertice(novoGrafo, args[0]));
+		Vertice v1 = new Vertice("v1");
+		Vertice v2 = new Vertice("v2");
+		v1 = novoGrafo.encontrarVertice(args[0]);
+		v2 = novoGrafo.encontrarVertice(args[1]);
+		menorCaminho = novoGrafo.encontrarMenorCaminhoDijkstra(v1, v2);
 		System.out.println("O menor caminho entre "+args[0]+" e "+args[1]+" é: ");
 		for (int i=0;i<menorCaminho.size();i++){
 			System.out.print(menorCaminho.get(i).getDescricao()+ " -> ");

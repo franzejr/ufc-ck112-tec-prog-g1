@@ -6,6 +6,14 @@ public class Grafo {
 
 	private List<Vertice> vertices = new ArrayList<Vertice>();
 	private List<Aresta> arestas = new ArrayList<Aresta>();
+	
+	//Atributos usados na função encontrarMenorCaminho
+	List<Vertice> menorCaminho = new ArrayList<Vertice>();
+	Vertice verticeCaminho = new Vertice ("caminho");
+	Vertice atual = new Vertice ("atual");
+	Vertice vizinho = new Vertice ("vizinho");
+	List<Vertice> fronteira = new ArrayList<Vertice>();
+	int verticesNaoVisitados = this.vertices.size();
 
 	public void setArestas(List<Aresta> arestas){
 		
@@ -42,14 +50,22 @@ public class Grafo {
 		}
 	}
 	
-	public List<Vertice> encontrarMenorCaminhoDijkstra(Vertice v1, Vertice v2){
+	public Vertice encontrarVertice(String nome){
 		
-		List<Vertice> menorCaminho = new ArrayList<Vertice>();
-		Vertice verticeCaminho = new Vertice ("caminho");
-		Vertice atual = new Vertice ("atual");
-		Vertice vizinho = new Vertice ("vizinho");
-		List<Vertice> fronteira = new ArrayList<Vertice>();
-		int verticesNaoVisitados = this.vertices.size();
+		for (int i=0;i<this.getVertices().size();i++){
+			
+			if (nome.equalsIgnoreCase(this.getVertices().get(i).getDescricao())){
+				
+				return this.getVertices().get(i);
+				
+			}
+		}
+		
+		return null;
+		
+	}
+	
+	public List<Vertice> encontrarMenorCaminhoDijkstra(Vertice v1, Vertice v2){
 		
 		atual = v1;
 		fronteira.add(atual);
