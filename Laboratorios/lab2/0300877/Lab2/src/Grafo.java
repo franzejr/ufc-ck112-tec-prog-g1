@@ -13,7 +13,7 @@ public class Grafo {
 	Vertice atual = new Vertice ("atual");
 	Vertice vizinho = new Vertice ("vizinho");
 	List<Vertice> fronteira = new ArrayList<Vertice>();
-	int verticesNaoVisitados = this.vertices.size();
+	int verticesNaoVisitados;
 
 	public void setArestas(List<Aresta> arestas){
 		
@@ -36,20 +36,6 @@ public class Grafo {
 		return this.vertices;
 	}
 	
-	public void ordenarLista(List<Vertice> lista){
-		
-		for (int i=lista.size()-2;i>=0;i--){
-			
-			for (int j=0;j<i;j++){
-				
-				if (lista.get(j).getDistancia() > lista.get(j+1).getDistancia()){
-					
-					Collections.swap(lista, j, j+1);
-				}
-			}
-		}
-	}
-	
 	public Vertice encontrarVertice(String nome){
 		
 		for (int i=0;i<this.getVertices().size();i++){
@@ -67,73 +53,76 @@ public class Grafo {
 	
 	public List<Vertice> encontrarMenorCaminhoDijkstra(Vertice v1, Vertice v2){
 		
+		verticesNaoVisitados = this.getVertices().size();
 		atual = v1;
 		fronteira.add(atual);
 		menorCaminho.add(atual);
 		
-		
+		//Colocando a distancias iniciais
 		for (int i=0;i< this.vertices.size();i++){
 			
 			//Ajustando as distâncias
-			if (this.vertices.get(i).equals(v1)){
+			if (this.vertices.get(i).getDescricao().equals(atual.getDescricao())){
 				
 				this.vertices.get(i).setDistancia(0);
+				
 			} else{
 				
 				this.vertices.get(i).setDistancia(9999);
 				
 			}
-			
 		}
+		
 		
 		while (verticesNaoVisitados != 0){
 			
-			atual = fronteira.get(0);
-			
+			atual = this.fronteira.get(0);
 			for (int i=0; i<atual.getArestas().size();i++){
 				
-				//Localizando o vértice vizinho
-				if (atual.getArestas().get(i).getVertices().get(0).equals(atual)){
+				vizinho = atual.getArestas().get(i).getDestino();				
+				if (!vizinho.verificarVisita()){
 					
-					vizinho = atual.getArestas().get(i).getVertices().get(1);
-				} else {
+					vizinho.setPai(atual);
 					
-					vizinho = atual.getArestas().get(i).getVertices().get(0);
-				}
-				
-				vizinho.setPai(atual);
-				
-				//Comparando a distância do vizinho com a possível distância
-				if (vizinho.getDistancia() > (atual.getDistancia() + atual.getArestas().get(i).getPeso())){
-					
-					vizinho.setDistancia(atual.getDistancia() + atual.getArestas().get(i).getPeso());
-					/*Se o vizinho é o vértice procurado, e foi feita uma mudança na distância,
-					 * cria a lista com o menor caminho*/
-					if (vizinho.equals(v2)){
-						menorCaminho.clear();
-						verticeCaminho = vizinho;
-						while (!verticeCaminho.equals(atual)){
+					//Comparando a distância do vizinho com a possível distância
+					if (vizinho.getDistancia() > (atual.getDistancia() + atual.getArestas().get(i).getPeso())){
+						
+						vizinho.setDistancia(atual.getDistancia() + atual.getArestas().get(i).getPeso());
+						
+						/*Se o vizinho é o vértice procurado, e foi feita uma mudança na distância,
+						 * cria a lista com o menor caminho*/
+						if (vizinho == v2){
+							menorCaminho.clear();
+							verticeCaminho = vizinho;
+							menorCaminho.add(vizinho);
+							while (verticeCaminho.getPai() != null){
 							
-							menorCaminho.add(verticeCaminho);
-							verticeCaminho = verticeCaminho.getPai();
+								menorCaminho.add(verticeCaminho.getPai());
+								verticeCaminho = verticeCaminho.getPai();
+								
+								
+							}
+							//this.ordenarLista(menorCaminho);
+							Collections.sort(menorCaminho);
 							
 						}
-						this.ordenarLista(menorCaminho);
 					}
+					this.fronteira.add(vizinho);
 				}
-				fronteira.add(vizinho);
 				
 			}
 			
 			atual.visitar();
 			verticesNaoVisitados--;
-			fronteira.remove(atual);
-			this.ordenarLista(fronteira);
+			this.fronteira.remove(atual);
+			//this.ordenarLista(fronteira);
+			Collections.sort(fronteira);
 		
 		}
 				
 		return menorCaminho;
 	}
+	
 
 }
 

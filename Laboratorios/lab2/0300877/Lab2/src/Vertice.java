@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vertice {
+public class Vertice implements Comparable<Vertice>{
 	
 	private String descricao;
 	private int distancia;
@@ -10,10 +10,16 @@ public class Vertice {
 	private List<Aresta> arestas = new ArrayList<Aresta>();
 	private List<Vertice> vizinhos = new ArrayList<Vertice>();
 	
+	
 	public Vertice(String nome){
 		
 		this.descricao = nome;
 		
+	}
+	
+	public void setDescricao(String nome){
+		
+		this.descricao = nome;
 	}
 	
 	public String getDescricao(){
@@ -52,15 +58,10 @@ public class Vertice {
 		return this.pai;
 	}
 
-	public void setVizinhos(List<Vertice> vizinhos) {
+	public void setVizinho(Vertice vizinho) {
 		
-		this.vizinhos.addAll(vizinhos);
-		
-		for (int i=0;i<vizinhos.size();i++){
-			Aresta a = new Aresta(this, vizinhos.get(i));
-			this.arestas.add(a);
-		}
-		
+		this.vizinhos.add(vizinho);
+				
 	}
 	
 	public List<Vertice> getVizinhos(){
@@ -68,9 +69,25 @@ public class Vertice {
 		return this.vizinhos;
 	}
 	
+	public void setAresta(Aresta novaAresta){
+		
+		this.arestas.add(novaAresta);
+		
+	}
+	
 	public List<Aresta> getArestas() {
 		
 		return arestas;
+	}
+
+	@Override
+	public int compareTo(Vertice vertice) {
+		  if(this.getDistancia() < vertice.getDistancia()) return -1;
+          else if(this.getDistancia() == vertice.getDistancia()) return 0;
+          
+          return 1;
+
+		
 	}
 	
 }

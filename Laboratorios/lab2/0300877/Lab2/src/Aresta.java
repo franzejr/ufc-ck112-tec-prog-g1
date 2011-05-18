@@ -1,18 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class Aresta {
 	
 	private int peso;
-	private List<Vertice> extremidades = new ArrayList<Vertice>();
+	private Vertice origem;
+	private Vertice destino;
 	
 	
 	public Aresta(Vertice v1, Vertice v2){
 		
 		this.peso = 1;
-		this.extremidades.add(v1);
-		this.extremidades.add(v2);
+		this.origem = v1;
+		this.destino = v2;
 		
 	}
 	
@@ -26,10 +24,21 @@ public class Aresta {
 		return peso;
 	}
 	
-	public List<Vertice> getVertices(){
-		
-		return extremidades;
-		
+
+	public void setDestino(Vertice destino) {
+		this.destino = destino;
+	}
+
+	public Vertice getDestino() {
+		return destino;
+	}
+
+	public void setOrigem(Vertice origem) {
+		this.origem = origem;
+	}
+
+	public Vertice getOrigem() {
+		return origem;
 	}
 	
 }
