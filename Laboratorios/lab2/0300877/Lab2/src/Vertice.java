@@ -6,6 +6,7 @@ public class Vertice {
 	private String descricao;
 	private int distancia;
 	private boolean visitado = false;
+	private Vertice pai;
 	private List<Aresta> arestas = new ArrayList<Aresta>();
 	private List<Vertice> vizinhos = new ArrayList<Vertice>();
 	
@@ -40,7 +41,16 @@ public class Vertice {
 		
 		return this.distancia;
 	}
-
+	
+	public void setPai(Vertice pai){
+		
+		this.pai = pai;
+	}
+	
+	public Vertice getPai(){
+		
+		return this.pai;
+	}
 
 	public void setVizinhos(List<Vertice> vizinhos) {
 		
@@ -50,6 +60,7 @@ public class Vertice {
 			Aresta a = new Aresta(this, vizinhos.get(i));
 			this.arestas.add(a);
 		}
+		
 	}
 	
 	public List<Vertice> getVizinhos(){

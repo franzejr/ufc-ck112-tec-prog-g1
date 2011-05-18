@@ -5,14 +5,14 @@ import java.util.List;
 public class Aresta {
 	
 	private int peso;
-	private Vertice[] vertices = new Vertice[2];
+	private List<Vertice> extremidades = new ArrayList<Vertice>();
 	
 	
 	public Aresta(Vertice v1, Vertice v2){
 		
 		this.peso = 1;
-		this.vertices[0] = v1;
-		this.vertices[1] = v2;
+		this.extremidades.add(v1);
+		this.extremidades.add(v2);
 		
 	}
 	
@@ -26,9 +26,9 @@ public class Aresta {
 		return peso;
 	}
 	
-	public Vertice[] getVertices(){
+	public List<Vertice> getVertices(){
 		
-		return vertices;
+		return extremidades;
 		
 	}
 	
