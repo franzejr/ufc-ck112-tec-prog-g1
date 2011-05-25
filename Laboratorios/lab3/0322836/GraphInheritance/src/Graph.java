@@ -1,8 +1,8 @@
 
 public abstract class Graph {
 	
-	private MySet<Vertex> vertexes = new MySet<Vertex>();
-	private MySet<Edge> edges = new MySet<Edge>();
+	public MySet<Vertex> vertexes = new MySet<Vertex>();
+	public MySet<Edge> edges = new MySet<Edge>();
 
 	public abstract void addVertex();
 	
@@ -16,17 +16,12 @@ public abstract class Graph {
 	
 	public abstract boolean hasCycle();
 	
-	public void setVertexes(MySet<Vertex> vertexes) {
-		this.vertexes = vertexes;
-	}
-	public MySet<Vertex> getVertexes() {
-		return vertexes;
-	}
-	public void setEdges(MySet<Edge> edges) {
-		this.edges = edges;
-	}
-	public MySet<Edge> getEdges() {
-		return edges;
-	}
+	public abstract void setVertexes();
+	
+	public abstract MySet<Vertex> getVertexes();
+	
+	public abstract void setEdges();
+	
+	public abstract MySet<Edge> getEdges();
 
 }

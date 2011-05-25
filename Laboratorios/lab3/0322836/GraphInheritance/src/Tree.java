@@ -4,7 +4,7 @@ public class Tree extends Graph {
 	@Override
 	public void addVertex() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -33,8 +33,31 @@ public class Tree extends Graph {
 
 	@Override
 	public boolean hasCycle() {
-		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void setVertexes() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public MySet<Vertex> getVertexes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setEdges() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public MySet<Edge> getEdges() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
