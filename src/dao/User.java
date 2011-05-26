@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class User {
 
 	@Id @GeneratedValue
-	private Long id;
+	private long id;
 	@Id
 	private String cpf;
 	private String name;
@@ -61,7 +61,9 @@ public class User {
 	public void setLearningInstitution(String learningInstitution) {
 		this.learningInstitution = learningInstitution;
 	}
-	public Long getId() {
+	
+	
+	public long getId() {
 		return id;
 	}
 	
