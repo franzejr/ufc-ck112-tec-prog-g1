@@ -1,13 +1,14 @@
 package dao;
 
 import org.hibernate.Session;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.AnnotationConfiguration;
 
-public class SessionFactory {
+
+public class SessionFactory {	
 	
 	
 	public static Session createSession(){
-		return new Configuration().configure().buildSessionFactory().openSession();		
+		return new AnnotationConfiguration().configure().buildSessionFactory().openSession();		
 	}
 	
 	
