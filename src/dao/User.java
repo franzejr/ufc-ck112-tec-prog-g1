@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.NotNull;
+
+
+
 
 
 
@@ -14,8 +18,12 @@ public class User {
 	private long id;
 	@Id
 	private String cpf;
+	@NotNull
 	private String name;
+	@Id
 	private String email;
+	@NotNull
+	private String password;
 	private String aboutYou;
 	//get from a .properties(talk to Franzé).
 	private String country;
@@ -62,7 +70,12 @@ public class User {
 		this.learningInstitution = learningInstitution;
 	}
 	
-	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public long getId() {
 		return id;
 	}
