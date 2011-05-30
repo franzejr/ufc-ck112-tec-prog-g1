@@ -15,8 +15,6 @@
 	
 
 	User u = new User();
-	u.setCpf("00000000000");
-	u.setName("Franzé Jr.");
 	s.getTransaction().begin();
 	s.save(u);
 	s.getTransaction().commit();
