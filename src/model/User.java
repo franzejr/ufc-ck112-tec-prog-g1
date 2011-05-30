@@ -1,4 +1,4 @@
-package dao;
+package model;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.validator.NotNull;
+
+import dao.UserDAO;
 
 
 

@@ -1,5 +1,7 @@
 package dao;
 
+import model.User;
+
 import org.hibernate.Session;
 
 
